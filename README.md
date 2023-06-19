@@ -7,19 +7,39 @@ ML FAQ model demo with rasa &amp; Docker
 #### Init Rasa
 
 ```
-docker run  -p 5005:5005 -v $(pwd):/app <IMAGE>:3.5.2 init --no-prompt
+docker run  -p 5005:5005 -v $(pwd):/app khalosa/rasa-aarch64:3.5.2 init --no-prompt
+```
+
+## Result:
+
+```
+023-06-19 08:27:42 INFO     rasa.engine.training.hooks  - Restored component 'MemoizationPolicy' from cache.
+2023-06-19 08:27:42 INFO     rasa.engine.training.hooks  - Restored component 'RulePolicy' from cache.
+2023-06-19 08:27:42 INFO     rasa.engine.training.hooks  - Restored component 'TEDPolicy' from cache.
+2023-06-19 08:27:42 INFO     rasa.engine.training.hooks  - Restored component 'UnexpecTEDIntentPolicy' from cache.
+Welcome to Rasa! 🤖
+
+To get started quickly, an initial project will be created.
+If you need some help, check out the documentation at https://rasa.com/docs/rasa.
+
+Created project directory at '/app'.
+Finished creating project structure.
+Training an initial model...
+The configuration for policies and pipeline was chosen automatically. It was written into the config file at 'config.yml'.
+Your Rasa model is trained and saved at 'models/20230619-082740-upbeat-step.tar.gz'.
+If you want to speak to the assistant, run 'rasa shell' at any time inside the project directory.
 ```
 
 #### Train Model 
 
 ```
-docker run -v $(pwd):/app <IMAGE>:3.5.2 train --domain domain.yml --data data --out models
+docker run -v $(pwd):/app khalosa/rasa-aarch64:3.5.2 train --domain domain.yml --data data --out models
 ```
 
 #### Run model 
 
 ```
-docker run -v $(pwd):/app <IMAGE>:3.5.2 shell
+docker run -v $(pwd):/app khalosa/rasa-aarch64:3.5.2 shell
 ```
 
 ## WebChat
